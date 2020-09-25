@@ -3,13 +3,17 @@
     "name": "Rotate Video",
     "version": "1.0",
     "browser_action": {
-        "default_title": "Rotate Video"
+        "default_title": "Rotate Video",
+        "default_popup": "popup.html"
     },
     "content_scripts": [
         {
           "matches": ["http://*/*", "https://*/*"],
           "css": ["rotate.css"],
-          "js": ["rotate.js"]
+          "js": ["scripts/rotate.js"]
         }
+    ],
+    "permissions": [
+        "tabs", "http://*/*"
     ]
 }
