@@ -12,13 +12,13 @@ const regexp = new RegExp('^' + prefix)
 
 document.addEventListener('keydown', (event) => {
     if (event.ctrlKey && event.shiftKey){
-        if (event.keyCode == 37){         // 左キー
+        if (event.keyCode == 72){         // hキー
             rotate(directions.LEFT)
-        } else if (event.keyCode == 39){　// 右キー
+        } else if (event.keyCode == 76){　// lー
             rotate(directions.RIGHT)
-        } else if (event.keyCode == 38){　// 上キー
+        } else if (event.keyCode == 75){　// kキー
             rotate(directions.TOP)
-        } else if (event.keyCode == 40){　// 下キー
+        } else if (event.keyCode == 74){　// jキー
             rotate(directions.BOTTOM)
         }
     }
