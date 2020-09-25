@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Rotate Video",
+    "version": "1.0",
+    "browser_action": {
+        "default_title": "Rotate Video"
+    },
+    "content_scripts": [
+        {
+          "matches": ["http://*/*", "https://*/*"],
+          "css": ["rotate.css"],
+          "js": ["rotate.js"]
+        }
+    ]
+}
