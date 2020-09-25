@@ -25,10 +25,14 @@ document.addEventListener('keydown', (event) => {
 })
 
 const rotate = (direction) => {
+    video.pause() // 再生中の場合、別のショートカットキーに引っかかる場合があるので回避策
+
     video.classList.forEach(c => {
         if (c.match(regexp)) {
             video.classList.remove(c)
         }
     })
     video.classList.add(prefix + direction)
+
+    video.play()
 }
