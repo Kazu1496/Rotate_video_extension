@@ -1,17 +1,10 @@
-const prefix = 'rotate-'
-const regexp = new RegExp('^' + prefix)
-
+/* eslint-disable no-undef */
+/**
+ * @param {Object} msg
+ * @param {Number} msg.angle - 角度
+ * @param {String} msg.expansionRate - 拡大率
+*/
 chrome.runtime.onMessage.addListener((msg) => {
-    const video = document.querySelector('video')
-
-    video.pause() // 再生中の場合、別のショートカットキーに引っかかる場合があるので回避策
-
-    video.classList.forEach(c => {
-        if (c.match(regexp)) {
-            video.classList.remove(c)
-        }
-    })
-    video.classList.add(prefix + msg.direction)
-
-    video.play()
-});
+  const video = document.querySelector('video')
+  video.style.transform = `rotate(${msg.angle}deg) scale(${msg.expansionRate})`
+})

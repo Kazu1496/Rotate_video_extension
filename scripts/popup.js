@@ -1,27 +1,41 @@
-const directions = {
-    TOP: 'top',
-    BOTTOM: 'bottom',
-    LEFT: 'left',
-    RIGHT: 'right'
-}
+/* eslint-disable no-undef */
+import { angles, zoomType } from './constant.js'
 
-const query = (dir) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, {
-            direction: dir
-        })
+let expansionRate = 1.0 // 拡大率
+let angle = 0 // 角度
+
+const query = (obj) => {
+  if (obj.angle !== undefined) angle = obj.angle
+
+  // 拡大率調整
+  if (obj.zoomType === zoomType.IN) expansionRate += 0.1
+  if (obj.zoomType === zoomType.OUT && expansionRate !== 0) expansionRate -= 0.1
+
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, {
+      angle,
+      expansionRate
     })
+  })
 }
 
-document.getElementById('btn-right').addEventListener('click', () => {
-    query(directions.RIGHT)
+document.getElementById('rotate-btn-right').addEventListener('click', () => {
+  query({ angle: angles.RIGHT })
 })
-document.getElementById('btn-left').addEventListener('click', () => {
-    query(directions.LEFT)
+document.getElementById('rotate-btn-left').addEventListener('click', () => {
+  query({ angle: angles.LEFT })
 })
-document.getElementById('btn-top').addEventListener('click', () => {
-    query(directions.TOP)
+document.getElementById('rotate-btn-top').addEventListener('click', () => {
+  query({ angle: angles.TOP })
 })
-document.getElementById('btn-bottom').addEventListener('click', () => {
-    query(directions.BOTTOM)
+document.getElementById('rotate-btn-bottom').addEventListener('click', () => {
+  query({ angle: angles.BOTTOM })
+})
+
+document.getElementById('zoom-in-btn').addEventListener('click', () => {
+  query({ zoomType: zoomType.IN })
+})
+
+document.getElementById('zoom-out-btn').addEventListener('click', () => {
+  query({ zoomType: zoomType.OUT })
 })

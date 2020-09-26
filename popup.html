@@ -1,9 +1,33 @@
 <html lang="ja">
-<body>
-    <button id="btn-top">0</button>
-    <button id="btn-right">90</button>
-    <button id="btn-bottom">180</button>
-    <button id="btn-left">270</button>
-    <script src="scripts/popup.js"></script>
-</body>
+    <head>
+        <style>
+            body {
+                width: 200px;
+                text-align: center;
+            }
+            .rotate_container, .zoom_container {
+                display: flex;
+                justify-content: space-around;
+            }
+            .zoom_container {
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Video Rotater</h1>
+        <div class="rotate_container">
+            <p>Rotate</p>
+            <button id="rotate-btn-top">0</button>
+            <button id="rotate-btn-right">90</button>
+            <button id="rotate-btn-bottom">180</button>
+            <button id="rotate-btn-left">270</button>
+        </div>
+        <div class="zoom_container">
+            <p>Zoom</p>
+            <button id="zoom-in-btn">zoom in</button>
+            <button id="zoom-out-btn">zoom out</button>
+        </div>
+        <script src="dist/popup.js"></script>
+    </body>
 </html>

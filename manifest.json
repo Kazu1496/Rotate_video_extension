@@ -9,8 +9,7 @@
     "content_scripts": [
         {
           "matches": ["http://*/*", "https://*/*"],
-          "css": ["rotate.css"],
-          "js": ["scripts/rotate.js"]
+          "js": ["dist/rotate.js"]
         }
     ],
     "permissions": [
